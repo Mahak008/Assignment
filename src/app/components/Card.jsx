@@ -55,7 +55,7 @@ const Card = () => {
             <p className="text-normal md:text-xl text-white my-2">
               {cardData[currentIndex].role}
             </p>
-            <p className="text-white font-normal text-xxs">
+            <p className="text-gray-200 text-xs md:text-sm">
               {cardData[currentIndex].details}
             </p>
           </div>
