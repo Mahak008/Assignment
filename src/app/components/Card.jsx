@@ -32,7 +32,7 @@ const Card = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row items-center justify-center w-full h-screen overflow-hidden px-4">
+    <div className="flex flex-col-reverse md:flex-row items-center justify-center w-full h-screen overflow-x-hidden px-4">
       {/* Main Card Section */}
       <div
         className="relative flex flex-col border border-[#db9125] rounded-lg shadow-lg custom-gradient"
@@ -58,7 +58,7 @@ const Card = () => {
             <p className="text-normal md:text-xl text-white my-2">
               {cardData[currentIndex].role}
             </p>
-            <p className="text-gray-200 text-xs md:text-sm">
+            <p className="text-gray-200 text-xs md:text-sm text-justify">
               {cardData[currentIndex].details}
             </p>
           </div>
@@ -128,8 +128,8 @@ const Card = () => {
           </button>
         </div>
 
-        <div className="flex mt-8">
-          <div className="w-52 flex gap-4">
+        <div className="flex mt-8 mx-auto">
+          <div className="w-36 gap-2 md:w-52 flex md:gap-4">
             <span className="text-[#db9125] font-bold text-3xl">
               9<sup className="">K+</sup>
             </span>
@@ -138,7 +138,7 @@ const Card = () => {
 
           <span className="text-gray-400 text-6xl font-normal">|</span>
 
-          <div className="w-52 ml-4 flex gap-4">
+          <div className="w-36 md:w-52 md:ml-4 flex md:gap-4">
             <span className="text-[#db9125] font-extrabold text-2xl">
               175%
             </span>
