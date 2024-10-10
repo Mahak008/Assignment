@@ -11,22 +11,24 @@ const Card = () => {
 
   // Function to handle next card
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % cardData.length);
+    if (currentIndex + 4 < cardData.length) {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   // Function to handle previous card
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? cardData.length - 1 : prevIndex - 1
-    );
+    if (currentIndex > 0) {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
+    }
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen">
+    <div className="flex flex-col md:flex-row items-center justify-center w-full h-screen px-4">
       {/* Card Section */}
       <div
         className="relative flex flex-col border border-[#db9125] rounded-lg shadow-lg custom-gradient"
-        style={{ width: "550px", height: "250px" }} // Adjust height as needed
+        style={{ width: "100%", maxWidth: "550px", height: "250px" }} // Responsive width
       >
         {/* Dynamic hike content */}
         <div className="absolute top-4 right-4 bg-green-500 text-white font-semibold px-2 py-1 rounded z-10">
@@ -48,13 +50,13 @@ const Card = () => {
 
           {/* Right Text Information */}
           <div className="flex flex-col ml-4">
-            <h3 className="text-2xl font-semibold text-[#db9125]">
+            <h3 className="text-xl md:text-2xl font-semibold text-[#db9125]">
               {cardData[currentIndex].name}
             </h3>
-            <p className="text-white text-xl my-2">
+            <p className="text-base md:text-xl text-white my-2">
               {cardData[currentIndex].role}
             </p>
-            <p className="text-white font-normal">
+            <p className="text-white font-normal text-sm md:text-base">
               {cardData[currentIndex].details}
             </p>
           </div>
@@ -62,8 +64,8 @@ const Card = () => {
       </div>
 
       {/* Text and Navigation Section */}
-      <div className="flex flex-col items-start ml-10">
-        <h2 className="text-3xl font-bold text-black">
+      <div className="flex flex-col items-start md:ml-10 mt-6 md:mt-0">
+        <h2 className="text-2xl md:text-3xl font-bold text-black">
           Real Stories, Real Success
         </h2>
 
@@ -75,36 +77,39 @@ const Card = () => {
         <div className="flex items-center mt-4">
           <button
             onClick={handlePrev}
-            className={`p-4 text-2xl text-black transition duration-300 ${currentIndex > 0 ? '' : 'invisible'}`}
+            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex === 0 ? 'invisible' : ''}`}
           >
             ←
           </button>
 
-          {/* Image Frames */}
-          <div className="flex space-x-2 mx-4">
-            {cardData.map((card, index) => (
-              <div
-                key={index}
-                className={`w-20 h-20 border rounded-lg overflow-hidden flex items-center justify-center ${
-                  index === currentIndex ? "border-[#db9125]" : "border-gray-300"
-                }`}
-              >
-                {index === currentIndex ? (
+          {/* Image Frames Slider */}
+          <div className="flex overflow-hidden w-64">
+            <div
+              className="flex transition-transform duration-300"
+              style={{ transform: `translateX(-${(currentIndex) * 100 / 4}%)` }} // Adjust translateX for slider effect
+            >
+              {cardData.slice(0, Math.min(cardData.length, 4)).map((card, index) => (
+                <div
+                  key={index}
+                  className={`w-16 h-16 border rounded-lg overflow-hidden flex items-center justify-center ${
+                    index === currentIndex % 4 ? "border-[#db9125]" : "border-gray-300"
+                  }`}
+                >
                   <Image
                     src={profile}
                     alt={card.name}
-                    width={80}
-                    height={80}
+                    width={64} // Responsive width
+                    height={64} // Responsive height
                     className="object-cover"
                   />
-                ) : null}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
 
           <button
             onClick={handleNext}
-            className={`p-4 text-2xl text-black transition duration-300 ${currentIndex < cardData.length - 1 ? '' : 'invisible'}`}
+            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex >= cardData.length - 4 ? 'invisible' : ''}`}
           >
             →
           </button>
