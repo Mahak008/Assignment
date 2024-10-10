@@ -9,4 +9,9 @@
       #3e2a0c 80%  /* To color */
     );
   }
+
+  .filter.blur-sm {
+    filter: blur(4px);
+  }
+  
   

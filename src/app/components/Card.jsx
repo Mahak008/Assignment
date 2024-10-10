@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { useState } from "react";
 import cardData from "./CardContent";
@@ -7,29 +7,25 @@ import "../../app/css/styles.css";
 
 const Card = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleFrames = 4;
 
   const handleNext = () => {
     if (currentIndex < cardData.length - 1) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
+      setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, cardData.length - 1));
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
+      setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
     }
   };
 
-  const startFrameIndex = Math.floor(currentIndex / visibleFrames) * visibleFrames;
-  const endFrameIndex = Math.min(startFrameIndex + visibleFrames, cardData.length);
-
-  // Determine if the frames should slide
-  const shouldSlide = currentIndex + visibleFrames < cardData.length;
+  // Determine the range of cards to display
+  const currentCards = cardData.slice(Math.max(0, currentIndex - 3), currentIndex + 1);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center w-full h-screen px-4">
-      {/* Card Section */}
+    <div className="flex flex-col-reverse md:flex-row items-center justify-center w-full h-screen px-4">
+      {/* Main Card Section */}
       <div className="relative flex flex-col border border-[#db9125] rounded-lg shadow-lg custom-gradient" style={{ width: "100%", maxWidth: "550px", height: "320px" }}>
         <div className="absolute top-4 right-4 bg-green-500 text-white font-semibold px-2 py-1 rounded z-10">
           {cardData[currentIndex].hike}
@@ -64,68 +60,32 @@ const Card = () => {
         </div>
       </div>
 
-      {/* Text and Navigation Section */}
-      <div className="flex flex-col items-start md:ml-10 mt-6 md:mt-0 px-4 mx-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-black text-center md:text-left">
-          Real Stories, Real Success
-        </h2>
-
-        <p className="text-lg mt-2 text-gray-400 text-center md:text-left">
-          Discover what our learners say about us
-        </p>
-
-        {/* Navigation Arrows and Image Frames Section */}
-        <div className="flex items-center mt-4">
-          <button
-            onClick={handlePrev}
-            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
-            disabled={currentIndex === 0}
-          >
-            ←
-          </button>
-
-          {/* Image Frames Slider */}
-          <div className="flex overflow-hidden w-72">
-            <div
-              className="flex transition-transform duration-300 gap-2"
-              style={{
-                transform: shouldSlide
-                  ? `translateX(-${(currentIndex % visibleFrames) * (100 / visibleFrames)}%)`
-                  : "translateX(0)"  // Stop sliding when the last set of frames is reached
-              }} 
-            >
-              {cardData.slice(startFrameIndex, endFrameIndex).map((card, index) => (
-                <div
-                  key={index}
-                  className={`w-16 h-16 border rounded-lg overflow-hidden flex items-center justify-center ${
-                    index + startFrameIndex === currentIndex
-                      ? "border-[#db9125]"
-                      : "border-gray-300"
-                  }`}
-                >
-                  {/* Show image only for active frame */}
-                  {index + startFrameIndex === currentIndex && (
-                    <Image
-                      src={card.imageUrl}
-                      alt={card.name}
-                      width={64} 
-                      height={64}
-                      className="object-cover transition-opacity duration-300"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <button
-            onClick={handleNext}
-            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex >= cardData.length - 1 ? "opacity-50 cursor-not-allowed" : ""}`}
-            disabled={currentIndex >= cardData.length - 1}
-          >
-            →
-          </button>
+      {/* Frame Section */}
+      <div className="flex flex-row ml-4 space-x-2 mb-6">
+        <button onClick={handlePrev} className="text-black font-bold text-xl px-2 py-1">{"<"}</button>
+        <div className="flex flex-row space-x-2 overflow-hidden" style={{ width: "400px" }}>
+          {/* Display current visible cards */}
+          {currentCards.map((item, index) => {
+            const isActive = currentIndex === Math.max(0, currentIndex - 3) + index; // Check if it's the active card
+            
+            return (
+              <div
+                key={currentIndex - 3 + index} // Ensure unique keys for visible frames
+                className={`w-20 h-20 border rounded-lg ${isActive ? "border-[#db9125]" : "border-gray-400"} ${isActive ? '' : 'filter blur-sm'}`}
+                style={{ position: "relative" }}
+              >
+                <Image
+                  src={item.imageUrl}
+                  alt={item.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+            );
+          })}
         </div>
+        <button onClick={handleNext} className="text-black font-bold text-xl px-2 py-1">{">"}</button>
       </div>
     </div>
   );
