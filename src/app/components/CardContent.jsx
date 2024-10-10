@@ -59,6 +59,7 @@ const cardData = [
     imageUrl: p6,
     company: "Natwest",
   },
+  
 ];
 
 export default cardData;

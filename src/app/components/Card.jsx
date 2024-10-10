@@ -7,36 +7,35 @@ import "../../app/css/styles.css";
 
 const Card = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleFrames = 4;
 
-  // Function to handle next card
   const handleNext = () => {
-    if (currentIndex + 4 < cardData.length) {
+    if (currentIndex < cardData.length - 1) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
 
-  // Function to handle previous card
   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
 
+  const startFrameIndex = Math.floor(currentIndex / visibleFrames) * visibleFrames;
+  const endFrameIndex = Math.min(startFrameIndex + visibleFrames, cardData.length);
+
+  // Determine if the frames should slide
+  const shouldSlide = currentIndex + visibleFrames < cardData.length;
+
   return (
     <div className="flex flex-col md:flex-row items-center justify-center w-full h-screen px-4">
       {/* Card Section */}
-      <div
-        className="relative flex flex-col border border-[#db9125] rounded-lg shadow-lg custom-gradient"
-        style={{ width: "100%", maxWidth: "550px", height: "320px" }} 
-      >
-        {/* Dynamic hike content */}
+      <div className="relative flex flex-col border border-[#db9125] rounded-lg shadow-lg custom-gradient" style={{ width: "100%", maxWidth: "550px", height: "320px" }}>
         <div className="absolute top-4 right-4 bg-green-500 text-white font-semibold px-2 py-1 rounded z-10">
           {cardData[currentIndex].hike}
         </div>
 
-        {/* Image and Text Section */}
         <div className="flex flex-row items-center mt-10 p-4">
-          {/* Left Image */}
           <div className="flex-shrink-0">
             <Image
               src={cardData[currentIndex].imageUrl}
@@ -47,7 +46,6 @@ const Card = () => {
             />
           </div>
 
-          {/* Right Text Information */}
           <div className="flex flex-col ml-4">
             <h3 className="text-xl md:text-2xl text-[#db9125]">
               {cardData[currentIndex].name}
@@ -80,9 +78,8 @@ const Card = () => {
         <div className="flex items-center mt-4">
           <button
             onClick={handlePrev}
-            className={`p-2 text-2xl text-black transition duration-300 ${
-              currentIndex === 0 ? "invisible" : ""
-            }`}
+            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+            disabled={currentIndex === 0}
           >
             ←
           </button>
@@ -91,39 +88,40 @@ const Card = () => {
           <div className="flex overflow-hidden w-72">
             <div
               className="flex transition-transform duration-300 gap-2"
-              style={{ transform: `translateX(-${(currentIndex * 100) / 4}%)` }} 
+              style={{
+                transform: shouldSlide
+                  ? `translateX(-${(currentIndex % visibleFrames) * (100 / visibleFrames)}%)`
+                  : "translateX(0)"  // Stop sliding when the last set of frames is reached
+              }} 
             >
-              {cardData
-                .slice(0, Math.min(cardData.length, 4))
-                .map((card, index) => (
-                  <div
-                    key={index}
-                    className={`w-16 h-16 border rounded-lg overflow-hidden flex items-center justify-center ${
-                      index === currentIndex % 4
-                        ? "border-[#db9125]"
-                        : "border-gray-300"
-                    }`}
-                  >
-                  
-                    {index === currentIndex % 4 && (
-                      <Image
-                        src={card.imageUrl}
-                        alt={card.name}
-                        width={64} 
-                        height={64}
-                        className="object-cover"
-                      />
-                    )}
-                  </div>
-                ))}
+              {cardData.slice(startFrameIndex, endFrameIndex).map((card, index) => (
+                <div
+                  key={index}
+                  className={`w-16 h-16 border rounded-lg overflow-hidden flex items-center justify-center ${
+                    index + startFrameIndex === currentIndex
+                      ? "border-[#db9125]"
+                      : "border-gray-300"
+                  }`}
+                >
+                  {/* Show image only for active frame */}
+                  {index + startFrameIndex === currentIndex && (
+                    <Image
+                      src={card.imageUrl}
+                      alt={card.name}
+                      width={64} 
+                      height={64}
+                      className="object-cover transition-opacity duration-300"
+                    />
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
           <button
             onClick={handleNext}
-            className={`p-2 text-2xl text-black transition duration-300 ${
-              currentIndex >= cardData.length - 4 ? "invisible" : ""
-            }`}
+            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex >= cardData.length - 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+            disabled={currentIndex >= cardData.length - 1}
           >
             →
           </button>
