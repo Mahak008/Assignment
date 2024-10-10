@@ -85,6 +85,7 @@ const Card = () => {
         </p>
 
         <div className="flex flex-row ml-4">
+        
           <button
             onClick={handlePrev}
             className="text-black font-bold text-xl px-2 py-1"
@@ -94,7 +95,7 @@ const Card = () => {
           </button>
 
           <div
-            className="flex flex-row space-x-2 overflow-hidden"
+            className="flex flex-row space-x-2 overflow-hidden justify-center items-center m-auto"
             style={{ width: "400px" }}
           >
             {/* Display current visible cards */}
