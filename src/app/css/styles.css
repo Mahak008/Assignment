@@ -13,11 +13,22 @@
   filter: blur(6px);
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.frame-container {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
 }
 
-.no-scrollbar {
-  -ms-overflow-style: none;  /* Internet Explorer and Edge */
-  scrollbar-width: none;  /* Firefox */
+.frame {
+  min-width: 80px; /* Adjust as necessary */
+  transition: opacity 0.3s ease;
+}
+
+.active-frame {
+  opacity: 1;
+  filter: none;
+}
+
+.inactive-frame {
+  opacity: 0.5;
+  filter: blur(2px);
 }

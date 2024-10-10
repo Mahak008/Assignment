@@ -63,10 +63,11 @@ const Card = () => {
             </p>
           </div>
         </div>
-        <div className="p4">
+        <div className="p4 flex justify-between items-center p-4">
           <p className="text-2xl text-white px-4">
             {cardData[currentIndex].company}
           </p>
+          <p className="font-white text-sm bg-red-700 px-3 py-2 rounded-lg">You Tube</p>
         </div>
       </div>
 
@@ -130,15 +131,15 @@ const Card = () => {
 
         <div className="flex mt-8 mx-auto">
           <div className="w-36 gap-2 md:w-52 flex md:gap-4">
-            <span className="text-[#db9125] font-bold text-3xl">
-              9<sup className="">K+</sup>
+            <span className="text-[#db9125] font-bold text-2xl">
+              9K+
             </span>
             <span className="text-gray-400 text-md">
               Successful Career Transitions
             </span>
           </div>
 
-          <span className="text-gray-400 text-6xl font-normal">|</span>
+          <span className="text-gray-400 text-6xl font-thin">|</span>
 
           <div className="w-36 md:w-52 md:ml-4 flex md:gap-4">
             <span className="text-[#db9125] font-extrabold text-2xl">175%</span>
