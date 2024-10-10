@@ -33,7 +33,7 @@ const Card = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row items-center justify-center w-full h-screen px-4">
+    <div className="flex flex-col-reverse md:flex-row items-center justify-center w-full h-screen overflow-x-hidden px-4">
       {/* Main Card Section */}
       <div
         className="relative flex flex-col border border-[#db9125] rounded-lg shadow-lg custom-gradient"
