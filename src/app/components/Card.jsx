@@ -72,7 +72,7 @@ const Card = () => {
           Real Stories, Real Success
         </h2>
 
-        <p className="text-lg mt-2 text-black">
+        <p className="text-lg mt-2 text-gray-400">
           Discover what our learners say about us
         </p>
 
@@ -88,10 +88,10 @@ const Card = () => {
           </button>
 
           {/* Image Frames Slider */}
-          <div className="flex overflow-hidden w-64">
+          <div className="flex overflow-hidden w-72">
             <div
-              className="flex transition-transform duration-300"
-              style={{ transform: `translateX(-${(currentIndex * 100) / 4}%)` }} // Adjust translateX for slider effect
+              className="flex transition-transform duration-300 gap-2"
+              style={{ transform: `translateX(-${(currentIndex * 100) / 4}%)` }} 
             >
               {cardData
                 .slice(0, Math.min(cardData.length, 4))
@@ -104,13 +104,16 @@ const Card = () => {
                         : "border-gray-300"
                     }`}
                   >
-                    <Image
-                      src={card.imageUrl}
-                      alt={card.name}
-                      width={64} // Responsive width
-                      height={64} // Responsive height
-                      className="object-cover"
-                    />
+                  
+                    {index === currentIndex % 4 && (
+                      <Image
+                        src={card.imageUrl}
+                        alt={card.name}
+                        width={64} // Responsive width
+                        height={64} // Responsive height
+                        className="object-cover"
+                      />
+                    )}
                   </div>
                 ))}
             </div>
