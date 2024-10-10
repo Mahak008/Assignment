@@ -27,7 +27,7 @@ const Card = () => {
       {/* Card Section */}
       <div
         className="relative flex flex-col border border-[#db9125] rounded-lg shadow-lg custom-gradient"
-        style={{ width: "100%", maxWidth: "550px", height: "300px" }} 
+        style={{ width: "100%", maxWidth: "550px", height: "350px" }} 
       >
         {/* Dynamic hike content */}
         <div className="absolute top-4 right-4 bg-green-500 text-white font-semibold px-2 py-1 rounded z-10">
@@ -49,13 +49,13 @@ const Card = () => {
 
           {/* Right Text Information */}
           <div className="flex flex-col ml-4">
-            <h3 className="text-xl md:text-2xl font-semibold text-[#db9125]">
+            <h3 className="text-xl md:text-2xl text-[#db9125]">
               {cardData[currentIndex].name}
             </h3>
-            <p className="text-base md:text-xl text-white my-2">
+            <p className="text-normal md:text-xl text-white my-2">
               {cardData[currentIndex].role}
             </p>
-            <p className="text-white font-normal text-sm md:text-base">
+            <p className="text-white font-normal text-xxs">
               {cardData[currentIndex].details}
             </p>
           </div>
