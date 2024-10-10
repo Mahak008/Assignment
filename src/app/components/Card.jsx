@@ -75,12 +75,12 @@ const Card = () => {
       </div>
 
       {/* Frame Section */}
-      <div className="flex flex-col items-start md:ml-10 mt-6 md:mt-0 px-4 mx-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-black text-center md:text-left">
+      <div className="flex flex-col items-start md:ml-10 mt-6 md:mt-0 px-4 mx-4 mb-6">
+        <h2 className="text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-[#0e0e0e] via-[#3a2c15] to-[#3e2a0c] font-bold text-center md:text-left m-auto md:mt-2 md:mb-4">
           Real Stories, Real Success
         </h2>
 
-        <p className="text-lg mt-2 mb-4 text-gray-400 text-center md:text-left">
+        <p className="text-lg m-auto md:mt-2 md:mb-4 my-6 text-gray-400 text-center md:text-left">
           Discover what our learners say about us
         </p>
 
