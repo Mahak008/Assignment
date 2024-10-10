@@ -67,12 +67,12 @@ const Card = () => {
       </div>
 
       {/* Text and Navigation Section */}
-      <div className="flex flex-col items-start md:ml-10 mt-6 md:mt-0 px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-black">
+      <div className="flex flex-col items-start md:ml-10 mt-6 md:mt-0 px-4 mx-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-black text-center md:text-left">
           Real Stories, Real Success
         </h2>
 
-        <p className="text-lg mt-2 text-gray-400">
+        <p className="text-lg mt-2 text-gray-400 text-center md:text-left">
           Discover what our learners say about us
         </p>
 
