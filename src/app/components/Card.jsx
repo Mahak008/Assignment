@@ -133,15 +133,15 @@ const Card = () => {
             <span className="text-[#db9125] font-bold text-3xl">
               9<sup className="">K+</sup>
             </span>
-            <span className="text-gray-400 text-md">Successful Career Transitions</span>
+            <span className="text-gray-400 text-md">
+              Successful Career Transitions
+            </span>
           </div>
 
           <span className="text-gray-400 text-6xl font-normal">|</span>
 
           <div className="w-36 md:w-52 md:ml-4 flex md:gap-4">
-            <span className="text-[#db9125] font-extrabold text-2xl">
-              175%
-            </span>
+            <span className="text-[#db9125] font-extrabold text-2xl">175%</span>
             <span className="text-gray-400 text-md">Average Salary Hike</span>
           </div>
         </div>

@@ -1,15 +1,16 @@
-import p1 from "../Image/p1.png"
-import p2 from "../Image/p2.jpg"
-import p3 from "../Image/p3.png"
-import p4 from "../Image/p4.png"
-import p5 from "../Image/p5.jpg"
-import p6 from "../Image/p6.png"
+import p1 from "../Image/p1.png";
+import p2 from "../Image/p2.jpg";
+import p3 from "../Image/p3.png";
+import p4 from "../Image/p4.png";
+import p5 from "../Image/p5.jpg";
+import p6 from "../Image/p6.png";
 
 const cardData = [
   {
     name: "Jaya Sinha",
     role: "Data Scientist",
-    details: "Transitioning from a non-tech role, LearnBay's IBM data science certification euipped me with the skills needed in today's market. The course's interactive sessions and personalized guidance from Abhishek sir were invaluable",
+    details:
+      "Transitioning from a non-tech role, LearnBay's IBM data science certification euipped me with the skills needed in today's market. The course's interactive sessions and personalized guidance from Abhishek sir were invaluable",
     hike: "150% hike",
     imageUrl: p1,
     company: "Amazon",
@@ -59,7 +60,6 @@ const cardData = [
     imageUrl: p6,
     company: "Natwest",
   },
-  
 ];
 
 export default cardData;
