@@ -7,12 +7,13 @@ import p6 from "../Image/p6.png"
 
 const cardData = [
   {
-    name: "Candidate 1",
-    role: "Frontend Developer",
+    name: "Jaya Sinha",
+    role: "Data Scientist",
     details:
       "Expert in React.js and Tailwind CSS. Passionate about building user-friendly applications.",
     hike: "150% hike",
     imageUrl: p1,
+    company: "Amazon",
   },
   {
     name: "Candidate 2",
@@ -21,6 +22,7 @@ const cardData = [
       "Specializes in Node.js and Express.js. Experienced in building scalable APIs.",
     hike: "200% hike",
     imageUrl: p2,
+    company: "Cendrol",
   },
   {
     name: "Candidate 3",
@@ -29,6 +31,7 @@ const cardData = [
       "Creative designer with a focus on user-centered design. Proficient in Figma and Adobe XD.",
     hike: "180% hike",
     imageUrl: p3,
+    company: "TheMathCompany",
   },
   {
     name: "Candidate 4",
@@ -37,6 +40,7 @@ const cardData = [
       "Expert in React.js and Tailwind CSS. Passionate about building user-friendly applications.",
     hike: "150% hike",
     imageUrl: p4,
+    company: "HCL",
   },
   {
     name: "Candidate 5",
@@ -45,6 +49,7 @@ const cardData = [
       "Specializes in Node.js and Express.js. Experienced in building scalable APIs.",
     hike: "250% hike",
     imageUrl: p5,
+    company: "TCS",
   },
   {
     name: "Candidate 6",
@@ -53,6 +58,7 @@ const cardData = [
       "Creative designer with a focus on user-centered design. Proficient in Figma and Adobe XD.",
     hike: "200% hike",
     imageUrl: p6,
+    company: "Natwest",
   },
 ];
 

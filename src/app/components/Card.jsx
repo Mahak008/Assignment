@@ -60,6 +60,10 @@ const Card = () => {
             </p>
           </div>
         </div>
+
+        <div className="p4">
+          <p className="text-2xl text-white px-4">{cardData[currentIndex].company}</p>
+        </div>
       </div>
 
       {/* Text and Navigation Section */}
