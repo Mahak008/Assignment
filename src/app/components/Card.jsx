@@ -1,4 +1,4 @@
-"use client"; // Mark this component as a Client Component
+"use client"; 
 
 import { useState } from "react";
 import cardData from "./CardContent";
@@ -109,8 +109,8 @@ const Card = () => {
                       <Image
                         src={card.imageUrl}
                         alt={card.name}
-                        width={64} // Responsive width
-                        height={64} // Responsive height
+                        width={64} 
+                        height={64}
                         className="object-cover"
                       />
                     )}
