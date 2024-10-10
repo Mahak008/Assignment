@@ -4,7 +4,6 @@ import { useState } from "react";
 import cardData from "./CardContent";
 import Image from "next/image";
 import "../../app/css/styles.css";
-import profile from "../Image/profile.png"; // Default profile image
 
 const Card = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,7 +39,7 @@ const Card = () => {
           {/* Left Image */}
           <div className="flex-shrink-0">
             <Image
-              src={profile}
+              src={cardData[currentIndex].imageUrl}
               alt={cardData[currentIndex].name}
               width={120}
               height={120}
@@ -96,7 +95,7 @@ const Card = () => {
                   }`}
                 >
                   <Image
-                    src={profile}
+                    src={card.imageUrl}
                     alt={card.name}
                     width={64} // Responsive width
                     height={64} // Responsive height
