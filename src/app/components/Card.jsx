@@ -7,6 +7,7 @@ import "../../app/css/styles.css";
 
 const Card = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleFrames = 4;
 
   const handleNext = () => {
     if (currentIndex < cardData.length - 1) {
@@ -21,7 +22,13 @@ const Card = () => {
   };
 
   // Determine the range of cards to display
-  const currentCards = cardData.slice(Math.max(0, currentIndex - 3), currentIndex + 1);
+  const start = Math.max(0, currentIndex - 3);
+  const currentCards = cardData.slice(start, start + visibleFrames);
+
+  // Handle image click to set the currentIndex
+  const handleImageClick = (index) => {
+    setCurrentIndex(start + index);
+  };
 
   return (
     <div className="flex flex-col-reverse md:flex-row items-center justify-center w-full h-screen px-4">
@@ -61,31 +68,32 @@ const Card = () => {
       </div>
 
       {/* Frame Section */}
-      <div className="flex flex-row ml-4 space-x-2 mb-6">
-        <button onClick={handlePrev} className="text-black font-bold text-xl px-2 py-1">{"<"}</button>
+      <div className="flex flex-row ml-4 space-x-2">
+        <button onClick={handlePrev} className="text-black font-bold text-xl px-2 py-1">{"←"}</button>
         <div className="flex flex-row space-x-2 overflow-hidden" style={{ width: "400px" }}>
           {/* Display current visible cards */}
           {currentCards.map((item, index) => {
-            const isActive = currentIndex === Math.max(0, currentIndex - 3) + index; // Check if it's the active card
-            
+            const cardIndex = start + index; // Calculate actual index in cardData
+            const isActive = cardIndex === currentIndex; // Check if this card is the active one
             return (
               <div
-                key={currentIndex - 3 + index} // Ensure unique keys for visible frames
+                key={cardIndex}
                 className={`w-20 h-20 border rounded-lg ${isActive ? "border-[#db9125]" : "border-gray-400"} ${isActive ? '' : 'filter blur-sm'}`}
                 style={{ position: "relative" }}
+                onClick={() => handleImageClick(index)} // Add click handler
               >
                 <Image
                   src={item.imageUrl}
                   alt={item.name}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-lg"
+                  className="rounded-lg cursor-pointer" 
                 />
               </div>
             );
           })}
         </div>
-        <button onClick={handleNext} className="text-black font-bold text-xl px-2 py-1">{">"}</button>
+        <button onClick={handleNext} className="text-black font-bold text-xl px-2 py-1">{"→"}</button>
       </div>
     </div>
   );
