@@ -76,7 +76,9 @@ const Card = () => {
         <div className="flex items-center mt-4">
           <button
             onClick={handlePrev}
-            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex === 0 ? 'invisible' : ''}`}
+            className={`p-2 text-2xl text-black transition duration-300 ${
+              currentIndex === 0 ? "invisible" : ""
+            }`}
           >
             ←
           </button>
@@ -85,30 +87,36 @@ const Card = () => {
           <div className="flex overflow-hidden w-64">
             <div
               className="flex transition-transform duration-300"
-              style={{ transform: `translateX(-${(currentIndex) * 100 / 4}%)` }} // Adjust translateX for slider effect
+              style={{ transform: `translateX(-${(currentIndex * 100) / 4}%)` }} // Adjust translateX for slider effect
             >
-              {cardData.slice(0, Math.min(cardData.length, 4)).map((card, index) => (
-                <div
-                  key={index}
-                  className={`w-16 h-16 border rounded-lg overflow-hidden flex items-center justify-center ${
-                    index === currentIndex % 4 ? "border-[#db9125]" : "border-gray-300"
-                  }`}
-                >
-                  <Image
-                    src={card.imageUrl}
-                    alt={card.name}
-                    width={64} // Responsive width
-                    height={64} // Responsive height
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {cardData
+                .slice(0, Math.min(cardData.length, 4))
+                .map((card, index) => (
+                  <div
+                    key={index}
+                    className={`w-16 h-16 border rounded-lg overflow-hidden flex items-center justify-center ${
+                      index === currentIndex % 4
+                        ? "border-[#db9125]"
+                        : "border-gray-300"
+                    }`}
+                  >
+                    <Image
+                      src={card.imageUrl}
+                      alt={card.name}
+                      width={64} // Responsive width
+                      height={64} // Responsive height
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
             </div>
           </div>
 
           <button
             onClick={handleNext}
-            className={`p-2 text-2xl text-black transition duration-300 ${currentIndex >= cardData.length - 4 ? 'invisible' : ''}`}
+            className={`p-2 text-2xl text-black transition duration-300 ${
+              currentIndex >= cardData.length - 4 ? "invisible" : ""
+            }`}
           >
             →
           </button>

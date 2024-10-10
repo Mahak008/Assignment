@@ -1,6 +1,9 @@
-import profile from "../Image/profile.png"; // Default profile image
-import profile1 from "../Image/profile2.jpg"
-import profile2 from "../Image/profile3.jpg"
+import p1 from "../Image/p1.png"
+import p2 from "../Image/p2.jpg"
+import p3 from "../Image/p3.png"
+import p4 from "../Image/p4.png"
+import p5 from "../Image/p5.jpg"
+import p6 from "../Image/p6.png"
 
 const cardData = [
   {
@@ -9,7 +12,7 @@ const cardData = [
     details:
       "Expert in React.js and Tailwind CSS. Passionate about building user-friendly applications.",
     hike: "150% hike",
-    imageUrl: profile,
+    imageUrl: p1,
   },
   {
     name: "Candidate 2",
@@ -17,7 +20,7 @@ const cardData = [
     details:
       "Specializes in Node.js and Express.js. Experienced in building scalable APIs.",
     hike: "200% hike",
-    imageUrl: profile1,
+    imageUrl: p2,
   },
   {
     name: "Candidate 3",
@@ -25,7 +28,7 @@ const cardData = [
     details:
       "Creative designer with a focus on user-centered design. Proficient in Figma and Adobe XD.",
     hike: "180% hike",
-    imageUrl: profile2,
+    imageUrl: p3,
   },
   {
     name: "Candidate 4",
@@ -33,7 +36,7 @@ const cardData = [
     details:
       "Expert in React.js and Tailwind CSS. Passionate about building user-friendly applications.",
     hike: "150% hike",
-    imageUrl: profile,
+    imageUrl: p4,
   },
   {
     name: "Candidate 5",
@@ -41,7 +44,7 @@ const cardData = [
     details:
       "Specializes in Node.js and Express.js. Experienced in building scalable APIs.",
     hike: "250% hike",
-    imageUrl: profile1,
+    imageUrl: p5,
   },
   {
     name: "Candidate 6",
@@ -49,7 +52,7 @@ const cardData = [
     details:
       "Creative designer with a focus on user-centered design. Proficient in Figma and Adobe XD.",
     hike: "200% hike",
-    imageUrl: profile2,
+    imageUrl: p6,
   },
 ];
 
